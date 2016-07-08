@@ -102,7 +102,7 @@ These instructions will explain how to set up one of the demo projects included 
 ```
 hosts.exe add sif.demo.domain
 ```
-8. Edit the `EnvironmentResponse.xml` XML for your chosen demo. in th `<infrastructureServices />` element replace where it references `localhost` with `sif.demo.domain`. It will look something like this:
+8. In the Sif.Framework.Demo.Setup project, edit the `EnvironmentResponse.xml` XML for your chosen demo. in the `<infrastructureServices />` element replace where it references `localhost` with `sif.demo.domain`. It will look something like this:
 ```xml
 ...
 <infrastructureServices>
@@ -113,7 +113,15 @@ hosts.exe add sif.demo.domain
 </infrastructureServices>
 ...
 ```
-9. Recompile the demo solution to ensure all changes have been moved to the right places.
-10. Go to `REPOSITORY_LOCATION/Sif3Framework-dotNet/Scripts/BAT/Demo execution` and execute the appropriate setup script for your selected demo, for example `DemoUkSetup.bat` for the UK locale project.
-11. Run the scripts `EnvironmentProvider.bat` to start the environment, followed by the start provider script for your loacale (e.g. `DemoUkProvider.bat`) and then run the start consumer script for your locale (e.g. `DemoUkConsumer.bat`).
-12. Look at Fiddler, you should see all messages between consumer, environment provider, and the service providers.
+9. In the consumer demo project of your choice, e.g. Sif.Framework.Demo.Uk.Consumer, edit the `SifFramework.config` file setting the `consumer.environment.url` property to point to the faked domain. That is:  
+```xml
+<add key="consumer.environment.url" value="http://sif.demo.domain:62921/api/environments/environment"/>
+```
+10. In the provider demo project of your choice, e.g. Sif.Framework.Demo.Uk.Provider, edit the `SifFramework.config` file setting the `provider.environment.url` property to point to the faked domain. That is:  
+```xml
+<add key="provider.environment.url" value="http://sif.demo.domain:62921/api/environments/environment"/>
+```
+11. Recompile the demo solution to ensure all changes have been moved to the right places.
+12. Go to `REPOSITORY_LOCATION/Sif3Framework-dotNet/Scripts/BAT/Demo execution` and execute the appropriate setup script for your selected demo, for example `DemoUkSetup.bat` for the UK locale project.
+13. Run the scripts `EnvironmentProvider.bat` to start the environment, followed by the start provider script for your loacale (e.g. `DemoUkProvider.bat`) and then run the start consumer script for your locale (e.g. `DemoUkConsumer.bat`).
+14. Look at Fiddler, you should see all messages between consumer, environment provider, and the service providers.
