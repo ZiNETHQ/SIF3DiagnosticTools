@@ -15,9 +15,9 @@ This is a known issue, particularly in .NET projects where local addresses will 
 
 This can be done by hand, or with a console command.
 
-In Windows this can be achieved using tools such as [Hosts Commander](http://vegalogic.com/go/hostscmd/). With this tool in your path you can add new host entry for a fake domain, e.g. `sif.demo.provider`, that points at localhost with a console command:
+In Windows this can be achieved using tools such as [Hosts Commander](http://vegalogic.com/go/hostscmd/). With this tool in your path you can add new host entry for a fake domain, e.g. `sif.demo.domain`, that points at localhost with a console command:
 ```
-hosts.exe add sif.demo.provider
+hosts.exe add sif.demo.domain
 ```
 Assuming all your fake domains start with the same text wildcards can be used to remove them in the future. For example, the console command to remove all domains that start with `sif.demo.` would be:
 ```
